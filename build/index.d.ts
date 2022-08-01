@@ -1,2 +1,2 @@
-export declare function middlewareSync(): void;
-export declare function middlewareAsync(): Promise<void>;
+export { middlewareSync } from "./src/middlewareSync";
+export { middlewareAsync } from "./src/middlewareAsync";
