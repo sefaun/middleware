@@ -27,7 +27,7 @@ function testing() {
 
   const result = middlewareSync(one, two, three)(10, 20, 30)
 
-  console.log(result)
+  console.log(result) //output -> [ 100, 2, 4, 5, 6, 4 ]
   console.log("finish")
 }
 
@@ -89,7 +89,7 @@ async function testing() {
 
   const result = await middlewareAsync(one, two, three)(10, 20, 30)
 
-  console.log(result)
+  console.log(result) //output -> [ 100, 2, 4, 5, 6, 4 ]
   console.log("finish")
 }
 
