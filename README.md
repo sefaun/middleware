@@ -2,7 +2,8 @@
 
 ## Sync Example
 ```javascript
-const { middlewareSync } = require("nodejs-middleware")
+const { middlewareSync } = require("nodejs-middleware") //CommonJS
+import { middlewareSync } from "nodejs-middleware" //Module
 
 
 function one(first, next, returns) {
@@ -45,7 +46,8 @@ finish
 
 ## Async Example
 ```javascript
-const { middlewareAsync } = require("nodejs-middleware")
+const { middlewareAsync } = require("nodejs-middleware") //CommonJS
+import { middlewareAsync } from "nodejs-middleware" //Module
 
 
 async function one(first, next, returns) {
