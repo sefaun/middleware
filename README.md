@@ -2,7 +2,7 @@
 
 ## Sync Example
 ```javascript
-const { middlewareSync } = require("../build")
+const { middlewareSync } = require("nodejs-middleware")
 
 
 function one(first, next, returns) {
@@ -45,7 +45,7 @@ finish
 
 ## Async Example
 ```javascript
-const { middlewareAsync } = require("../build")
+const { middlewareAsync } = require("nodejs-middleware")
 
 
 async function one(first, next, returns) {

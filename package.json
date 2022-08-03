@@ -1,8 +1,8 @@
 {
   "name": "nodejs-middleware",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Node.js Middleware like Express",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc"
   },
