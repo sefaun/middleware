@@ -3,12 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.middlewareSync = void 0;
 const slice = Array.prototype.slice;
 function middlewareSync() {
-    const stack = slice.call(arguments);
+    const stacks = slice.call(arguments);
     var arg = 0;
     var params = [];
     var return_values = [];
-    if (!stack.length) {
-        throw new Error("Not Found Any Function");
+    if (!stacks.length) {
+        throw new Error("There is no any arguments.");
+    }
+    for (let i = 0; i < stacks.length; i++) {
+        if (typeof stacks[i] !== "function") {
+            throw new Error(`Arguments ${i + 1} is not a Function. All arguments have to be a Function.`);
+        }
     }
     return function () {
         params = slice.call(arguments);
@@ -19,7 +24,7 @@ function middlewareSync() {
         if (params[arg] !== undefined) {
             new_params.push(params[arg]);
         }
-        stack[arg].apply(this, [...new_params, next, returns]);
+        stacks[arg].apply(this, [...new_params, next, returns]);
         function next() {
             const new_args = slice.call(arguments);
             arg++;
@@ -28,7 +33,7 @@ function middlewareSync() {
             if (params[arg] !== undefined) {
                 new_params.push(params[arg]);
             }
-            stack[arg].apply(this, [...new_params, next, returns]);
+            stacks[arg].apply(this, [...new_params, next, returns]);
         }
         return return_values.length ? return_values : undefined;
     };

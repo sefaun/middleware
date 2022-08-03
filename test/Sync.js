@@ -14,17 +14,16 @@ function two(other, second, next, returns) {
 function three(data, next, returns) {
   console.log(3, data, next, returns)
 
-  setTimeout(() => {
-    return returns(100, 2, 4, 5, 6, 4)
-  }, 2000);
+  return returns(100, 2, 4, 5, 6, 4)
 
 }
 
 
 function testing() {
 
-  middlewareSync(one, two, three)(10, 20, 30)
+  const result = middlewareSync(one, two, three)(10, 20, 30)
 
+  console.log(result)
   console.log("finish")
 }
 
