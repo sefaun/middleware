@@ -1,6 +1,6 @@
 {
   "name": "nodejs-middleware",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node.js Middleware like Express",
   "main": "build/index.js",
   "scripts": {

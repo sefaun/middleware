@@ -1,1 +1,1 @@
-export declare function middlewareAsync(): any;
+export declare function middlewareAsync(...[]: Iterable<Function>): any;
