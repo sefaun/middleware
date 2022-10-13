@@ -10,13 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.middlewareAsync = void 0;
-const slice = Array.prototype.slice;
-function middlewareAsync() {
+function middlewareAsync(...[]) {
+    const slice = Array.prototype.slice;
     const stacks = slice.call(arguments);
     const that = this;
-    var arg = 0;
-    var params = [];
-    var return_values = [];
     if (!stacks.length) {
         throw new Error("There is no any arguments.");
     }
@@ -27,27 +24,21 @@ function middlewareAsync() {
     }
     return function () {
         return __awaiter(this, arguments, void 0, function* () {
-            params = slice.call(arguments);
+            var arg = 0;
+            var return_values = [];
+            const params = slice.call(arguments);
             function returns() {
                 return_values = slice.call(arguments);
+                return return_values;
             }
-            let new_params = [];
-            if (params[arg] !== undefined) {
-                new_params.push(params[arg]);
-            }
-            yield stacks[arg].apply(that, [...new_params, next, returns]);
             function next() {
                 return __awaiter(this, arguments, void 0, function* () {
-                    const new_args = slice.call(arguments);
                     arg++;
-                    let new_params = [];
-                    new_params.push(...new_args);
-                    if (params[arg] !== undefined) {
-                        new_params.push(params[arg]);
-                    }
-                    yield stacks[arg].apply(that, [...new_params, next, returns]);
+                    const new_args = slice.call(arguments);
+                    yield stacks[arg].apply(that, [...new_args, params[arg], next, returns]);
                 });
             }
+            yield stacks[arg].apply(that, [params[arg], next, returns]);
             return return_values.length ? return_values : undefined;
         });
     };

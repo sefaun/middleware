@@ -13,7 +13,7 @@ function one(first, next, returns) {
 
 function two(other, second, next, returns) {
   console.log(2, other, second, next, returns)
-  next()
+  return next()
 }
 
 function three(data, next, returns) {

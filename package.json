@@ -1,7 +1,7 @@
 {
   "name": "nodejs-middleware",
-  "version": "1.0.5",
-  "description": "Node.js Middleware like Express",
+  "version": "1.0.7",
+  "description": "Node.js Middleware",
   "main": "build/index.js",
   "scripts": {
     "build": "tsc"
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sefaun/middleware"
+    "url": "https://github.com/sefaun/nodejs-middleware"
   },
   "keywords": [
     "Javascript",
@@ -22,5 +22,5 @@
     "middlewarejs",
     "middleware"
   ],
-  "license": "ISC"
+  "license": "MIT"
 }

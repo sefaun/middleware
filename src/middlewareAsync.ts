@@ -1,12 +1,7 @@
-const slice = Array.prototype.slice
-
-export function middlewareAsync(): any {
-
+export function middlewareAsync(...[]: Iterable<Function>): any {
+  const slice = Array.prototype.slice
   const stacks = slice.call(arguments)
   const that = this
-  var arg = 0
-  var params = []
-  var return_values = []
 
   if (!stacks.length) {
     throw new Error("There is no any arguments.")
@@ -19,35 +14,22 @@ export function middlewareAsync(): any {
   }
 
   return async function () {
-
-    params = slice.call(arguments)
+    var arg = 0
+    var return_values = []
+    const params = slice.call(arguments)
 
     function returns() {
-      return_values = slice.call(arguments);
+      return_values = slice.call(arguments)
+      return return_values
     }
-
-    let new_params = []
-
-    if (params[arg] !== undefined) {
-      new_params.push(params[arg])
-    }
-
-    await stacks[arg].apply(that, [...new_params, next, returns])
 
     async function next() {
-      const new_args = slice.call(arguments)
       arg++
-
-      let new_params = []
-
-      new_params.push(...new_args)
-
-      if (params[arg] !== undefined) {
-        new_params.push(params[arg])
-      }
-
-      await stacks[arg].apply(that, [...new_params, next, returns])
+      const new_args = slice.call(arguments)
+      await stacks[arg].apply(that, [...new_args, params[arg], next, returns])
     }
+
+    await stacks[arg].apply(that, [params[arg], next, returns])
 
     return return_values.length ? return_values : undefined
   }
