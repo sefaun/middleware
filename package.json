@@ -1,6 +1,6 @@
 {
   "name": "nodejs-middleware",
-  "version": "1.0.7",
+  "version": "1.1.8",
   "description": "Node.js Middleware",
   "main": "build/index.js",
   "scripts": {
